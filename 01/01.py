@@ -1,7 +1,7 @@
 import argparse
 
 
-def parse_args():
+def read_input():
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file_path")
     args = parser.parse_args()
@@ -12,12 +12,14 @@ def parse_args():
 
 
 def main():
-    calorie_groups = parse_args()
-
+    calorie_groups = read_input()
     calorie_totals = list(reversed(sorted([sum(x) for x in calorie_groups])))
+
     highest_calorie_total = calorie_totals[0]
+    print(f"Part 1: {highest_calorie_total}")
+
     highest_3_calorie_totals = sum(calorie_totals[:3])
-    print(f"Part 1:\n{highest_calorie_total}\n\nPart 2:\n{highest_3_calorie_totals}\n")
+    print(f"Part 2: {highest_3_calorie_totals}")
 
 
 if __name__ == "__main__":
